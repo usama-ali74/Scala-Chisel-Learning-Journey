@@ -69,45 +69,113 @@
 // }
 
 
-// // Question#4
-// import scala.util.Random
-// object Main {
-//   def main(args: Array[String]): Unit = {
+// Question#4
+import scala.util.Random
+object Main {
+  def main(args: Array[String]): Unit = {
 
-// var x=List(1,5,6,7,8,9)
-//   println(x.head)
-//   println(x.tail)
-//   println(x.length)
-//   val array = Array(1,2,3,4,2,2,2)
-//     println(array.head)
-//     println(array.tail)
-//     println(array.length)
-//   }
-// }
+var x=List(1,5,6,7,8,9)
+  println(x.head)
+  println(x.tail)
+  println(x.length)
+  val array = Array(1,2,3,4,2,2,2)
+    println(array.head)
+    println(array.tail)
+    println(array.length)
+  }
+}
 
 
 // // Assignments
-// // Task#1
+// Task#1
+import scala.util.Random
+object Main {
+  def main(args: Array[String]): Unit = {
+    def helperFunc(arr:List[Int],start:Int, end:Int,size:Int):List[Int]={
+      if (size==arr.length)
+        arr
+      else
+      helperFunc(arr :+ Random.between(start,end),start,end,size)
+    }
+    
+    
+    def RandomGenerator(start:Int, end:Int,size:Int):List[Int]={
+            helperFunc(List(),start,end,size)
+    }
+    val randomGen = RandomGenerator(50,100,15)
+    println(randomGen)
+    def quickSort(list: List[Int]): List[Int] = {
+    list match {
+      case Nil        => Nil
+      case a :: Nil   => List(a)
+      case a :: tail  => quickSort(tail.filter(x=> x <= a)) ::: List(a) ::: quickSort(tail.filter(x => x > a))
+        }
+      }
+    print(quickSort(randomGen))
+
+  }
+}
 
 
 
 
 
+// Task#2
+import scala.util.Random
+object Main {
+  def main(args: Array[String]): Unit = {
+
+  def helper(list:List[Char], s:Int, e:Int):List[Char] = {
+      if(s == e) 
+      list.reverse
+      else helper(s.toChar :: list, s + 1, e)
+    }
+   def charArray(start:Int,end:Int):List[Char] = {
+   
+    helper(List(), start, end)
+  }
+  println(charArray(97,100))}
+}
 
 
-// // Task#2
+// // Task#3
+// import scala.util.Random
+// object Main {
+//   def main(args: Array[String]): Unit = {
+//     def helperFunc(arr1:Array[Double],arr2:Array[Double],pointer:Int,ResultantArray:Array[Double]):Array[Double]={
+//       if (pointer == arr1.length) ResultantArray
+//       else
+//       helperFunc(arr1,arr2,pointer+1,ResultantArray:+arr1(pointer)+arr2(pointer))
+//     }
+//   def main(arr1:Array[Double],arr2:Array[Double]):Array[Double] ={   
+//     helperFunc(arr1,arr2,0,Array())
+//   }
+//   println(main(Array(1, 2, 3), Array(4, 5, 6)).mkString(","))      
+//     }
+//   }
+
+
+
+// // Task#4
 // import scala.util.Random
 // object Main {
 //   def main(args: Array[String]): Unit = {
 
-//   def helper(list:List[Char], s:Int, e:Int):List[Char] = {
-//       if(s == e) 
-//       list.reverse
-//       else helper(s.toChar :: list, s + 1, e)
-//     }
-//    def charArray(start:Int,end:Int):List[Char] = {
-   
-//     helper(List(), start, end)
+//   def helperFunc(arr:Array[Int],ResultantArray:Array[Int],pointer:Int):Array[Int]={
+//      if (pointer==arr.length)
+//       ResultantArray
+     
+//      else
+//       helperFunc(arr,if(arr(pointer)%2==0) ResultantArray :+ arr(pointer) else ResultantArray,pointer+1)
+//    }
+    
+//   def even(arr:Array[Int]):Array[Int]={
+//       helperFunc(arr,Array(),0)
+ 
+//  }
+//   println((Array.fill(100)(util.Random.nextInt(100)).count(_%2 == 0))) 
+//   println(even(Array.fill(100)(util.Random.nextInt(100))).mkString(","))
+  
 //   }
-//   println(charArray(97,100))}
 // }
+
